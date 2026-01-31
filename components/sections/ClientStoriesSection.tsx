@@ -188,6 +188,13 @@ export const ClientStoriesSection: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Load More Button */}
+        <div className="flex justify-center mt-8 md:mt-12">
+          <button className="px-8 py-3 border-2 border-[#E10174] text-[#E10174] rounded-lg text-base font-medium font-['Montserrat',sans-serif] hover:bg-[#E10174] hover:text-white transition-colors">
+            Load More
+          </button>
+        </div>
       </div>
     </section>
   );
