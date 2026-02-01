@@ -6,17 +6,28 @@ import Image from 'next/image';
 import { NAV_LINKS, SITE_INFO } from '@/lib/constants';
 import { SearchBar } from '@/components/ui/SearchBar';
 import { IconButton } from '@/components/ui/IconButton';
+import { motion } from 'framer-motion';
 
 export const Navigation: React.FC = () => {
   const [cartCount] = useState(1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="sticky top-0 z-50 bg-white shadow-sm"
+    >
       {/* Top Banner - Desktop Only */}
-      <div className="hidden md:block bg-pink-100 text-center py-3 text-sm border-b-4 border-pink-200">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="hidden md:block bg-pink-100 text-center py-3 text-sm border-b-4 border-pink-200"
+      >
         <p>Reach us on Instagram {SITE_INFO.instagram}, and our seasoned experts will personally guide you</p>
-      </div>
+      </motion.div>
 
       {/* Mobile Navigation - Shows only on mobile */}
       <div className="md:hidden border-b border-gray-200 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.08)]">
@@ -211,6 +222,6 @@ export const Navigation: React.FC = () => {
           </nav>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 };

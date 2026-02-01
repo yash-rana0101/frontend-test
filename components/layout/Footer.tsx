@@ -4,10 +4,17 @@ import React from 'react';
 import Link from 'next/link';
 import { SITE_INFO, FOOTER_SECTIONS } from '@/lib/constants';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-white border-t border-t-gray-200">
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-white border-t border-t-gray-200"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16">
         {/* Main Footer Content - Desktop Layout */}
         <div className="hidden md:flex gap-6 mb-12">
@@ -291,6 +298,6 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
