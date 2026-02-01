@@ -106,8 +106,15 @@ export const Navigation: React.FC = () => {
                 </svg>
               </button>
               <div className="hidden md:flex items-center gap-2 text-sm">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_1_1135)">
+                    <path d="M16.3685 17.7086C14.2518 19.8336 9.38514 18.4003 5.53514 14.5086C1.68514 10.6169 0.168471 5.75026 2.29347 3.63359L4.61014 1.30859L9.08514 5.78359L7.41847 7.45026C7.0836 7.79014 6.89589 8.24813 6.89589 8.72526C6.89589 9.2024 7.0836 9.66038 7.41847 10.0003L10.0018 12.5836C10.342 12.921 10.8018 13.1103 11.281 13.1103C11.7601 13.1103 12.2199 12.921 12.5601 12.5836L14.2268 10.9169L18.7018 15.3919L16.3685 17.7086Z" stroke="black" stroke-width="1.25" stroke-miterlimit="10" stroke-linejoin="round" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_1135">
+                      <rect width="20" height="20" fill="white" />
+                    </clipPath>
+                  </defs>
                 </svg>
                 <span>{SITE_INFO.phone}</span>
               </div>
