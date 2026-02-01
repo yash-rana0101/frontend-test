@@ -1,7 +1,7 @@
 <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 17.25 17.25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Group 1000007692">
-<path id="Vector" d="M13.7145 0.625H3.53548C1.92806 0.625 0.625 1.92806 0.625 3.53548V13.7145C0.625 15.3219 1.92806 16.625 3.53548 16.625H13.7145C15.3219 16.625 16.625 15.3219 16.625 13.7145V3.53548C16.625 1.92806 15.3219 0.625 13.7145 0.625Z" stroke="var(--stroke-0, black)" stroke-width="1.25" stroke-miterlimit="10" stroke-linejoin="round"/>
-<path id="Vector_2" d="M8.63429 12.2686C10.6414 12.2686 12.2686 10.6414 12.2686 8.63429C12.2686 6.62713 10.6414 5 8.63429 5C6.62713 5 5 6.62713 5 8.63429C5 10.6414 6.62713 12.2686 8.63429 12.2686Z" stroke="var(--stroke-0, black)" stroke-width="1.25" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path id="Vector" d="M13.7145 0.625H3.53548C1.92806 0.625 0.625 1.92806 0.625 3.53548V13.7145C0.625 15.3219 1.92806 16.625 3.53548 16.625H13.7145C15.3219 16.625 16.625 15.3219 16.625 13.7145V3.53548C16.625 1.92806 15.3219 0.625 13.7145 0.625Z" stroke="var(--stroke-0, black)" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round"/>
+<path id="Vector_2" d="M8.63429 12.2686C10.6414 12.2686 12.2686 10.6414 12.2686 8.63429C12.2686 6.62713 10.6414 5 8.63429 5C6.62713 5 5 6.62713 5 8.63429C5 10.6414 6.62713 12.2686 8.63429 12.2686Z" stroke="var(--stroke-0, black)" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round"/>
 <path id="Vector_3" d="M13.3395 4.99936C13.9413 4.99936 14.429 4.51156 14.429 3.90984C14.429 3.30811 13.9413 2.82031 13.3395 2.82031C12.7378 2.82031 12.25 3.30811 12.25 3.90984C12.25 4.51156 12.7378 4.99936 13.3395 4.99936Z" fill="var(--fill-0, black)"/>
 </g>
 </svg>
