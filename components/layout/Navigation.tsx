@@ -123,7 +123,7 @@ export const Navigation: React.FC = () => {
             {/* Center - Logo */}
             <Link href="/" className="shrink-0">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="Competition Suit Shop"
                 width={250}
                 height={40}

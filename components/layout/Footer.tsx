@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
           <div className="flex-shrink-0" style={{ width: '270px' }}>
             <div className="mb-4">
               <Image
-                src="/images/logo/logo.png"
+                src="/logo.svg"
                 alt="Competition Suit Shop"
                 width={269}
                 height={32}
