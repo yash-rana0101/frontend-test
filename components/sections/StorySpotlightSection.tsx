@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export const StorySpotlightSection: React.FC = () => {
   return (
@@ -13,13 +14,25 @@ export const StorySpotlightSection: React.FC = () => {
         <div className="text-center">
 
           {/* Pink gradient circle background with blur */}
-          <h2 className="text-3xl md:text-4xl font-semibold text-black mb-8 font-['Montserrat',sans-serif] leading-tight -z-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-semibold text-black mb-8 font-['Montserrat',sans-serif] leading-tight -z-20"
+          >
             We&apos;re opening the spotlight to you, our incredible athletes.
-          </h2>
+          </motion.h2>
 
-          <p className="text-base text-gray-700 mb-6 font-['Montserrat',sans-serif]">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-base text-gray-700 mb-6 font-['Montserrat',sans-serif]"
+          >
             Tell us:
-          </p>
+          </motion.p>
 
           {/* Quote Box */}
 

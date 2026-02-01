@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface StoryCardProps {
   name: string;
@@ -76,19 +77,37 @@ const StoryCard: React.FC<StoryCardProps> = ({
       <div className="flex flex-col gap-2 px-6">
         <div className="flex flex-col gap-10 py-6">
           <div className="flex flex-col gap-6">
-            <h3 className="text-[28px] font-medium text-black tracking-[-1px] font-['Montserrat',sans-serif] leading-normal">
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-[28px] font-medium text-black tracking-[-1px] font-['Montserrat',sans-serif] leading-normal"
+            >
               Meet {name}
-            </h3>
+            </motion.h3>
 
             <div className="h-px bg-gray-200" />
 
             <div className="flex flex-col gap-3">
-              <h4 className="text-[18px] font-medium text-black tracking-[-0.5px] font-['Montserrat',sans-serif] leading-normal">
+              <motion.h4
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-[18px] font-medium text-black tracking-[-0.5px] font-['Montserrat',sans-serif] leading-normal"
+              >
                 {title}
-              </h4>
-              <p className="text-base text-black/80 tracking-[-0.5px] font-['Montserrat',sans-serif] leading-normal">
+              </motion.h4>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-base text-black/80 tracking-[-0.5px] font-['Montserrat',sans-serif] leading-normal"
+              >
                 {description}
-              </p>
+              </motion.p>
             </div>
           </div>
 

@@ -2,13 +2,19 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export const AccountMenuPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-[1600px] mx-auto px-4 py-6">
         {/* User Profile */}
-        <div className="flex items-center gap-3 px-4 py-6 mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-3 px-4 py-6 mb-4"
+        >
           <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center shrink-0">
             <span className="text-xl font-semibold text-black font-['Montserrat',sans-serif]">
               K
@@ -17,10 +23,14 @@ export const AccountMenuPage: React.FC = () => {
           <h2 className="text-xl font-semibold text-black font-['Montserrat',sans-serif]">
             Kathy Williams
           </h2>
-        </div>
+        </motion.div>
 
         {/* Menu Items */}
-        <nav>
+        <motion.nav
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           <Link
             href="/account/details"
             className="flex items-start justify-between px-4 py-4 hover:bg-gray-50 active:bg-pink-50 transition-colors border-b border-gray-200"
@@ -138,7 +148,7 @@ export const AccountMenuPage: React.FC = () => {
               Logout
             </span>
           </button>
-        </nav>
+        </motion.nav>
       </div>
     </div>
   );

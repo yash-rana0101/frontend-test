@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export const ShareStorySection: React.FC = () => {
   return (
@@ -13,20 +14,32 @@ export const ShareStorySection: React.FC = () => {
       <div className="relative max-w-md mx-auto px-6">
         <div className="flex flex-col gap-8 items-center text-center">
           {/* Header */}
-          <div className="flex flex-col gap-0">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col gap-0"
+          >
             <p className="text-[18px] font-medium text-black tracking-[-1px] font-['Montserrat',sans-serif] leading-normal">
               We&apos;re opening the spotlight to you,
             </p>
             <p className="text-[18px] font-medium text-black tracking-[-1px] font-['Montserrat',sans-serif] leading-normal">
               our incredible athletes.
             </p>
-          </div>
+          </motion.div>
 
           {/* Questions Section */}
           <div className="flex flex-col gap-4 w-full">
-            <p className="text-base font-medium text-[#1C1C1C] tracking-[-0.5px] font-['Montserrat',sans-serif]">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-base font-medium text-[#1C1C1C] tracking-[-0.5px] font-['Montserrat',sans-serif]"
+            >
               Tell us:
-            </p>
+            </motion.p>
 
             <div className="bg-white rounded-2xl p-6 flex gap-6 w-full">
               <div className="flex flex-col gap-8 flex-1">

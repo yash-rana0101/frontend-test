@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface OrderItem {
   id: string;
@@ -73,7 +74,12 @@ export const OrdersPage: React.FC = () => {
         {/* Big Container Box */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-12">
           {/* Account Box - Hidden on mobile, shown on desktop */}
-          <aside className="hidden md:block md:w-[30%]">
+          <motion.aside
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="hidden md:block md:w-[30%]"
+          >
             {/* User Profile */}
             <div className="flex items-center gap-3 md:gap-4 px-4 md:px-6 py-6 md:py-8">
               <div className="w-12 h-12 md:w-15 md:h-15 rounded-full bg-pink-100 flex items-center justify-center shrink-0">
@@ -206,15 +212,25 @@ export const OrdersPage: React.FC = () => {
                 </span>
               </button>
             </nav>
-          </aside>
+          </motion.aside>
 
           {/* Tab Content Box - Full width on mobile, 60% on desktop */}
-          <main className="w-full md:w-[60%]">
+          <motion.main
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="w-full md:w-[60%]"
+          >
             {/* Mobile: Simple header with no container */}
             {/* Desktop: Pink container with heading */}
             <div className="md:px-10 md:py-8 md:bg-pink-100 md:rounded-2xl md:space-y-8">
               {/* Tab Heading */}
-              <div className="flex items-center mb-6 md:mb-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex items-center mb-6 md:mb-8"
+              >
                 {!selectedOrder ? (
                   <h1 className="text-base md:text-2xl font-medium md:font-normal text-black font-['Montserrat',sans-serif] tracking-[-0.5px]">
                     Order history
@@ -232,7 +248,7 @@ export const OrdersPage: React.FC = () => {
                     </span>
                   </button>
                 )}
-              </div>
+              </motion.div>
 
               {/* Content Container */}
               <div className="bg-white md:rounded-2xl md:p-10">
@@ -240,7 +256,13 @@ export const OrdersPage: React.FC = () => {
                   // Order List View
                   <div className="space-y-0">
                     {mockOrders.map((order, index) => (
-                      <div key={order.id} className="bg-[#FCFCFC] md:bg-transparent">
+                      <motion.div
+                        key={order.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                        className="bg-[#FCFCFC] md:bg-transparent"
+                      >
                         <div className="flex gap-4 py-4 md:py-4">
                           {/* Product Image Placeholder */}
                           <div className="w-16 h-16 md:w-16 md:h-16 bg-[#FDF2F9] border border-[#F3BCDA] rounded flex items-center justify-center shrink-0">
@@ -294,12 +316,17 @@ export const OrdersPage: React.FC = () => {
                             )}
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 ) : (
                   // Order Detail View
-                  <div className="flex flex-col gap-6 md:space-y-6">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col gap-6 md:space-y-6"
+                  >
                     {/* Product Card */}
                     <div className="flex gap-4 items-center pb-4 border-b border-gray-200">
                       {/* Product Image */}
@@ -378,11 +405,11 @@ export const OrdersPage: React.FC = () => {
                         2631 Co Rd 86, Cripple Creek, CO 80813, United States
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </div>
             </div>
-          </main>
+          </motion.main>
         </div>
       </div>
     </div>

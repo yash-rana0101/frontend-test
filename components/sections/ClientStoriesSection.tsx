@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { VideoModal } from '@/components/ui/VideoModal';
-import { motion } from 'framer-motion';
 
 // Story tile component with video overlay
 const StoryTile: React.FC<{
