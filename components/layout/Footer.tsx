@@ -82,7 +82,15 @@ export const Footer: React.FC = () => {
             <div className="flex gap-6">
               {/* Company Section */}
               <div className="flex-1">
-                <h3 className="font-medium text-lg mb-4 font-['Montserrat',sans-serif]">{FOOTER_SECTIONS.company.title}</h3>
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="font-medium text-lg mb-4 font-['Montserrat',sans-serif]"
+                >
+                  {FOOTER_SECTIONS.company.title}
+                </motion.h3>
                 <div className="flex gap-6">
                   <ul className="flex-1 space-y-3 text-sm">
                     {FOOTER_SECTIONS.company.links.slice(0, 5).map((link) => (
@@ -107,7 +115,15 @@ export const Footer: React.FC = () => {
 
               {/* Resources Section */}
               <div className="flex-1">
-                <h3 className="font-medium text-lg mb-4 font-['Montserrat',sans-serif]">{FOOTER_SECTIONS.resources.title}</h3>
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="font-medium text-lg mb-4 font-['Montserrat',sans-serif]"
+                >
+                  {FOOTER_SECTIONS.resources.title}
+                </motion.h3>
                 <div className="flex gap-6">
                   <ul className="flex-1 space-y-3 text-sm">
                     {FOOTER_SECTIONS.resources.links.slice(0, 4).map((link) => (
@@ -133,7 +149,15 @@ export const Footer: React.FC = () => {
 
             {/* Bottom Row: Help Center */}
             <div>
-              <h3 className="font-medium text-lg mb-4 font-['Montserrat',sans-serif]">{FOOTER_SECTIONS.help.title}</h3>
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="font-medium text-lg mb-4 font-['Montserrat',sans-serif]"
+              >
+                {FOOTER_SECTIONS.help.title}
+              </motion.h3>
               <div className="grid grid-cols-4 gap-6">
                 <ul className="space-y-3 text-sm">
                   {FOOTER_SECTIONS.help.links.slice(0, 3).map((link) => (
