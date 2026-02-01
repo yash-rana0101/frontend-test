@@ -1,46 +1,54 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { VideoModal } from '@/components/ui/VideoModal';
 
 // Story tile component with video overlay
-const StoryTile: React.FC<{ hasVideo?: boolean; imageSrc: string; className?: string }> = ({
+const StoryTile: React.FC<{
+  hasVideo?: boolean;
+  imageSrc: string;
+  className?: string;
+  onPlayClick?: () => void;
+}> = ({
   hasVideo = false,
   imageSrc,
-  className = ''
+  className = '',
+  onPlayClick
 }) => {
-  return (
-    <div className={`relative w-full h-full rounded-2xl overflow-hidden ${className}`}>
-      {/* Image */}
-      <Image
-        src={imageSrc}
-        alt="Client story"
-        fill
-        className="object-cover"
-      />
+    return (
+      <div className={`relative w-full h-full rounded-2xl overflow-hidden ${className}`}>
+        {/* Image */}
+        <Image
+          src={imageSrc}
+          alt="Client story"
+          fill
+          className="object-cover"
+        />
 
-      {/* Dark overlay for video tiles */}
-      {hasVideo && (
-        <div className="absolute inset-0 bg-black/30 z-5" />
-      )}
+        {/* Dark overlay for video tiles */}
+        {hasVideo && (
+          <div className="absolute inset-0 bg-black/30 z-5" />
+        )}
 
-      {/* Video play button overlay */}
-      {hasVideo && (
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          <button
-            className="w-16 h-16 flex items-center justify-center bg-transparent hover:scale-110 transition-transform"
-            aria-label="Play video"
-          >
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path opacity="0.16" d="M31.9638 59.9317C47.4102 59.9317 59.932 47.4098 59.932 31.9634C59.932 16.5169 47.4102 3.99512 31.9638 3.99512C16.5173 3.99512 3.99548 16.5169 3.99548 31.9634C3.99548 47.4098 16.5173 59.9317 31.9638 59.9317Z" fill="#FDF2F9" />
-              <path d="M44.712 30.5681C45.8084 31.177 45.8084 32.7537 44.712 33.3626L26.7215 43.3526C25.6562 43.9442 24.3474 43.1739 24.3474 41.9554V21.9753C24.3474 20.7568 25.6562 19.9866 26.7215 20.5781L44.712 30.5681Z" fill="white" />
-            </svg>
-          </button>
-        </div>
-      )}
-    </div>
-  );
-};
+        {/* Video play button overlay */}
+        {hasVideo && (
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <button
+              onClick={onPlayClick}
+              className="w-16 h-16 flex items-center justify-center bg-transparent hover:scale-110 transition-transform"
+              aria-label="Play video"
+            >
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.16" d="M31.9638 59.9317C47.4102 59.9317 59.932 47.4098 59.932 31.9634C59.932 16.5169 47.4102 3.99512 31.9638 3.99512C16.5173 3.99512 3.99548 16.5169 3.99548 31.9634C3.99548 47.4098 16.5173 59.9317 31.9638 59.9317Z" fill="#FDF2F9" />
+                <path d="M44.712 30.5681C45.8084 31.177 45.8084 32.7537 44.712 33.3626L26.7215 43.3526C25.6562 43.9442 24.3474 43.1739 24.3474 41.9554V21.9753C24.3474 20.7568 25.6562 19.9866 26.7215 20.5781L44.712 30.5681Z" fill="white" />
+              </svg>
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  };
 
 // Split tile component (2x2 grid or 2x1 grid)
 const SplitTile: React.FC<{ layout: 'quad' | 'horizontal' | 'vertical'; images: string[] }> = ({ layout, images }) => {
@@ -97,6 +105,14 @@ const SplitTile: React.FC<{ layout: 'quad' | 'horizontal' | 'vertical'; images: 
 };
 
 export const ClientStoriesSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedStory, setSelectedStory] = useState<{
+    thumbnailUrl: string;
+    title: string;
+    subtitle: string;
+    description: string;
+  } | null>(null);
+
   // Client story images - matching the provided images
   const storyImages = [
     '/images/stories/story-1.png',  // Competition stage photo
@@ -119,23 +135,38 @@ export const ClientStoriesSection: React.FC = () => {
     '/images/stories/story-18.png', // Portrait repeat
   ];
 
+  const handlePlayClick = (imageIndex: number) => {
+    setSelectedStory({
+      thumbnailUrl: storyImages[imageIndex],
+      title: "Meet Gissele Quezadq",
+      subtitle: "Became a coach",
+      description: "Placement text, to place everywhere. Please change it later according to the context it is kept around."
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedStory(null);
+  };
+
   return (
     <section className="py-12 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <div className="hidden md:block max-w-7xl mx-auto px-4 md:px-6">
         {/* Grid Layout - 4x4 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
           {/* Row 1 */}
           <div className="aspect-4/5">
-            <StoryTile hasVideo imageSrc={storyImages[0]} />
+            <StoryTile hasVideo imageSrc={storyImages[0]} onPlayClick={() => handlePlayClick(0)} />
           </div>
           <div className="aspect-4/5">
-            <StoryTile hasVideo imageSrc={storyImages[1]} />
+            <StoryTile hasVideo imageSrc={storyImages[1]} onPlayClick={() => handlePlayClick(1)} />
           </div>
           <div className="aspect-4/5">
-            <StoryTile hasVideo imageSrc={storyImages[2]} />
+            <StoryTile hasVideo imageSrc={storyImages[2]} onPlayClick={() => handlePlayClick(2)} />
           </div>
           <div className="aspect-4/5">
-            <StoryTile hasVideo imageSrc={storyImages[3]} />
+            <StoryTile hasVideo imageSrc={storyImages[3]} onPlayClick={() => handlePlayClick(3)} />
           </div>
 
           {/* Row 2 */}
@@ -143,13 +174,13 @@ export const ClientStoriesSection: React.FC = () => {
             <StoryTile imageSrc={storyImages[4]} />
           </div>
           <div className="aspect-4/5">
-            <StoryTile hasVideo imageSrc={storyImages[5]} />
+            <StoryTile hasVideo imageSrc={storyImages[5]} onPlayClick={() => handlePlayClick(5)} />
           </div>
           <div className="aspect-4/5">
             <StoryTile imageSrc={storyImages[6]} />
           </div>
           <div className="aspect-4/5">
-            <StoryTile hasVideo imageSrc={storyImages[7]} />
+            <StoryTile hasVideo imageSrc={storyImages[7]} onPlayClick={() => handlePlayClick(7)} />
           </div>
 
           {/* Row 3 */}
@@ -196,6 +227,18 @@ export const ClientStoriesSection: React.FC = () => {
           </button>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {selectedStory && (
+        <VideoModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          thumbnailUrl={selectedStory.thumbnailUrl}
+          title={selectedStory.title}
+          subtitle={selectedStory.subtitle}
+          description={selectedStory.description}
+        />
+      )}
     </section>
   );
 };

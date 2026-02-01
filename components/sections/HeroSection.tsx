@@ -37,14 +37,59 @@ const heroImages = [
 ];
 
 export const HeroSection: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(3); // Start with center image (3rd image)
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
+  // Scroll to the current image when index changes
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const containerWidth = container.clientWidth;
+      const padding = 32; // px-8 = 32px on each side
+
+      // Calculate the scroll position to center the current image
+      const images = container.querySelectorAll('[data-image-index]');
+      if (images[currentIndex]) {
+        const targetImage = images[currentIndex] as HTMLElement;
+        const imageLeft = targetImage.offsetLeft;
+        const imageWidth = targetImage.offsetWidth;
+        const scrollPosition = imageLeft - (containerWidth / 3) + (imageWidth / 3) + padding;
+
+        container.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [currentIndex]);
+
+  // Handle scroll to update current index based on snap position
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollLeft = container.scrollLeft + (container.clientWidth / 3);
+
+      // Find which image is closest to center
+      const images = container.querySelectorAll('[data-image-index]');
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      images.forEach((img, index) => {
+        const element = img as HTMLElement;
+        const imageCenter = element.offsetLeft + (element.offsetWidth / 2);
+        const distance = Math.abs(scrollLeft - imageCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      if (closestIndex !== currentIndex) {
+        setCurrentIndex(closestIndex);
+      }
+    }
+  };
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -62,7 +107,7 @@ export const HeroSection: React.FC = () => {
                   }}
                 >
                   <div
-                    className={`relative w-full h-113.25 rounded-lg overflow-hidden transition-all duration-500 ${index === currentIndex ? 'ring-4 ring-[#E10174]' : 'opacity-100/50'}`}
+                    className={`relative w-full h-113.25 rounded-lg overflow-hidden transition-all duration-500 ${index === currentIndex ? 'ring-2 ring-[#E10174]' : 'opacity-100/50'}`}
                   >
                     <Image
                       src={image.src}
@@ -75,56 +120,62 @@ export const HeroSection: React.FC = () => {
                 </div>
               ))}
             </div>
-          {/* Bottom Gradient Image Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-50 pointer-events-none">
-            {/* White gradient overlay */}
-            <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
-          </div>
+            {/* Bottom Gradient Image Overlay */}
+            <div className="absolute bottom-0 left-0 right-0 h-50 pointer-events-none">
+              {/* White gradient overlay */}
+              <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile: Single Image with Navigation */}
+      {/* Mobile: Horizontal Carousel - Centered with Peek Effect */}
       <div className="md:hidden">
-        <div className="relative aspect-9/16 max-h-150 overflow-hidden">
-          <Image
-            src={heroImages[currentIndex].src}
-            alt={heroImages[currentIndex].alt}
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Navigation Overlay */}
-          <div className="absolute inset-x-0 bottom-4 flex items-center justify-center gap-4 z-10">
-            <button
-              onClick={() => setCurrentIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length)}
-              className="w-9 h-9 bg-white/80 backdrop-blur-sm rounded-md flex items-center justify-center hover:bg-white transition-colors"
-              aria-label="Previous"
-            >
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <div className="flex gap-2">
-              {heroImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-black w-8' : 'bg-gray-400'
+        <div className="relative bg-gradient-to-b from-gray-50 to-white overflow-hidden" style={{ height: '600px' }}>
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex gap-3 items-start justify-start h-full overflow-x-auto scrollbar-hide px-8 pt-8"
+            style={{
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {heroImages.map((image, index) => (
+              <div
+                key={image.id}
+                data-image-index={index}
+                className={`shrink-0 flex items-center transition-all duration-500 ${index === currentIndex ? 'scale-100 opacity-100' : 'scale-90 opacity-60'
+                  }`}
+                style={{
+                  paddingTop: index === 2 ? '0px' : index === 1 || index === 3 ? '40px' : '80px',
+                  scrollSnapAlign: 'center',
+                  width: '280px',
+                }}
+              >
+                <div
+                  className={`relative w-full rounded-2xl overflow-hidden shadow-lg transition-all duration-300 ${index === currentIndex ? 'ring-4 ring-pink-500' : ''
                     }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={() => setCurrentIndex((prev) => (prev + 1) % heroImages.length)}
-              className="w-9 h-9 bg-white/80 backdrop-blur-sm rounded-md flex items-center justify-center hover:bg-white transition-colors"
-              aria-label="Next"
-            >
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+                  style={{
+                    aspectRatio: '9/16',
+                  }}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Gradient Overlay - Matching Figma */}
+          <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ height: '200px' }}>
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
           </div>
         </div>
       </div>

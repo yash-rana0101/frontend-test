@@ -29,8 +29,10 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 className="flex items-center gap-2 hover:text-gray-600 transition-colors"
               >
-                <svg width="20" height="20" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.0895 2H4.91048C3.30306 2 2 3.30306 2 4.91048V15.0895C2 16.6969 3.30306 18 4.91048 18H15.0895C16.6969 18 18 16.6969 18 15.0895V4.91048C18 3.30306 16.6969 2 15.0895 2Z" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round" />
+                  <path d="M10.0093 13.6436C12.0164 13.6436 13.6436 12.0164 13.6436 10.0093C13.6436 8.00213 12.0164 6.375 10.0093 6.375C8.00213 6.375 6.375 8.00213 6.375 10.0093C6.375 12.0164 8.00213 13.6436 10.0093 13.6436Z" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round" />
+                  <path d="M14.7145 6.37436C15.3163 6.37436 15.804 5.88656 15.804 5.28484C15.804 4.68311 15.3163 4.19531 14.7145 4.19531C14.1128 4.19531 13.625 4.68311 13.625 5.28484C13.625 5.88656 14.1128 6.37436 14.7145 6.37436Z" fill="black" />
                 </svg>
                 <span>{SITE_INFO.instagram}</span>
               </Link>
@@ -39,18 +41,20 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 className="flex items-center gap-2 hover:text-gray-600 transition-colors"
               >
-                <svg width="20" height="20" fill="currentColor">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.5667 2.83594H4.43333C2.67523 2.83594 1.25 4.26116 1.25 6.01927V13.9693C1.25 15.7274 2.67523 17.1526 4.43333 17.1526H15.5667C17.3248 17.1526 18.75 15.7274 18.75 13.9693V6.01927C18.75 4.26116 17.3248 2.83594 15.5667 2.83594Z" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round" />
+                  <path d="M13.3333 9.9974L7.5 13.3307V6.66406L13.3333 9.9974Z" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round" />
                 </svg>
+
                 <span>{SITE_INFO.name}</span>
               </Link>
               <a
                 href={`mailto:${SITE_INFO.email}`}
                 className="flex items-center gap-2 hover:text-gray-600 transition-colors"
               >
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.75 3.63281H1.25V16.3578H18.75V3.63281Z" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round" />
+                  <path d="M1.25 3.63281L10 12.3828L18.75 3.63281" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round" />
                 </svg>
                 <span>{SITE_INFO.email}</span>
               </a>
@@ -58,8 +62,8 @@ export const Footer: React.FC = () => {
                 href={`tel:${SITE_INFO.phone}`}
                 className="flex items-center gap-2 hover:text-gray-600 transition-colors"
               >
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.3685 17.7125C14.2518 19.8375 9.38514 18.4042 5.53514 14.5125C1.68514 10.6208 0.168471 5.75417 2.29347 3.6375L4.61014 1.3125L9.08514 5.7875L7.41847 7.45417C7.0836 7.79405 6.89589 8.25203 6.89589 8.72917C6.89589 9.2063 7.0836 9.66428 7.41847 10.0042L10.0018 12.5875C10.342 12.9249 10.8018 13.1142 11.281 13.1142C11.7601 13.1142 12.2199 12.9249 12.5601 12.5875L14.2268 10.9208L18.7018 15.3958L16.3685 17.7125Z" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" strokeLinejoin="round" />
                 </svg>
                 <span>{SITE_INFO.phone}</span>
               </a>
@@ -113,7 +117,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t pt-8">
+        <div className="border-t pt-8 border-gray-400/30">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-gray-600">{SITE_INFO.copyright}</p>
             <div className="flex items-center gap-3">
