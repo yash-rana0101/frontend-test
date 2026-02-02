@@ -60,3 +60,27 @@ export const FOOTER_SECTIONS = {
     ],
   },
 };
+
+// Sample products for testing
+export const SAMPLE_PRODUCTS = [
+  {
+    id: 'bm151-29',
+    name: 'Orange Pink Wellness Competition Suit',
+    code: 'BM151-29',
+    image: 'https://i.ibb.co/pS8Hy9X/image.png',
+    originalPrice: 426.00,
+    discountedPrice: 379.00,
+    discountPercentage: 11,
+    quantity: 1,
+  },
+  {
+    id: 'bm151-30',
+    name: 'Blue Sparkle Competition Suit',
+    code: 'BM151-30',
+    image: 'https://i.ibb.co/tTgmfj97/suit-Image-Url.png',
+    originalPrice: 379.00,
+    discountedPrice: 329.00,
+    discountPercentage: 13,
+    quantity: 1,
+  },
+];

@@ -32,3 +32,26 @@ export interface SocialLink {
   href: string;
   icon: string;
 }
+
+export interface CartItem {
+  id: string;
+  name: string;
+  code: string;
+  image: string;
+  originalPrice: number;
+  discountedPrice: number;
+  discountPercentage: number;
+  quantity: number;
+}
+
+export interface CartContextType {
+  items: CartItem[];
+  addItem: (item: CartItem) => void;
+  removeItem: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void;
+  clearCart: () => void;
+  totalItems: number;
+  subtotal: number;
+  deliveryFee: number;
+  total: number;
+}

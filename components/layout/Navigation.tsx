@@ -1,16 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { NAV_LINKS, SITE_INFO } from '@/lib/constants';
 import { SearchBar } from '@/components/ui/SearchBar';
 import { IconButton } from '@/components/ui/IconButton';
 import { motion } from 'framer-motion';
+import { useCart } from '@/lib/CartContext';
 
 export const Navigation: React.FC = () => {
-  const [cartCount] = useState(1);
+  const { totalItems } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isMounted = useSyncExternalStore(
+    () => () => { },
+    () => true,
+    () => false
+  );
 
   return (
     <motion.header
@@ -49,7 +55,7 @@ export const Navigation: React.FC = () => {
                   alt="Competition Suit Shop"
                   width={140}
                   height={18}
-                  className="h-[18px] w-auto"
+                  className="h-4.5 w-auto"
                   priority
                 />
               </Link>
@@ -74,9 +80,9 @@ export const Navigation: React.FC = () => {
                   <path d="M6.92886 19.9673C6.99953 19.6944 7.03327 19.4133 7.02917 19.1314C7.02917 18.2845 6.69274 17.4723 6.09389 16.8734C5.49504 16.2746 4.68283 15.9382 3.83593 15.9382C3.5534 15.932 3.27156 15.9686 3 16.0468" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" />
                   <path d="M20.5971 16.0775C20.339 16.0034 20.0715 15.9668 19.803 15.9688C18.9561 15.9688 18.1438 16.3053 17.545 16.9041C16.9461 17.503 16.6097 18.3152 16.6097 19.1621C16.6056 19.4439 16.6393 19.7251 16.71 19.998" stroke="black" strokeWidth="1.25" strokeMiterlimit="10" />
                 </svg>
-                {cartCount > 0 && (
+                {isMounted && totalItems > 0 && (
                   <span className="absolute -top-1.5 -right-1.5 bg-pink-50 border border-pink-300 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-medium text-black">
-                    {cartCount}
+                    {totalItems}
                   </span>
                 )}
               </Link>
@@ -164,17 +170,19 @@ export const Navigation: React.FC = () => {
                 }
                 label="Wishlist"
               />
-              <IconButton
-                icon={
-                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="9" cy="21" r="1" />
-                    <circle cx="20" cy="21" r="1" />
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                  </svg>
-                }
-                label="Cart"
-                badge={cartCount}
-              />
+              <Link href="/cart">
+                <IconButton
+                  icon={
+                    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="9" cy="21" r="1" />
+                      <circle cx="20" cy="21" r="1" />
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                  }
+                  label="Cart"
+                  badge={isMounted ? totalItems : 0}
+                />
+              </Link>
             </div>
           </div>
         </div>
