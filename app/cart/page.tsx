@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import { useCart } from '@/lib/CartContext';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,11 +9,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function CartPage() {
   const { items, updateQuantity, removeItem, subtotal, deliveryFee, total } = useCart();
   const [discountCode, setDiscountCode] = useState('');
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const handleIncrement = (id: string, currentQuantity: number) => {
     updateQuantity(id, currentQuantity + 1);
